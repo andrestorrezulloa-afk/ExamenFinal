@@ -1,4 +1,4 @@
-# Pablostify — Programación Móvil (Kotlin Multiplatform)
+#  — Programación Móvil (Kotlin Multiplatform)
 
 Proyecto completo preparado siguiendo el material de clase y los repositorios de referencia proporcionados.
 
@@ -102,12 +102,6 @@ O abre la raíz del proyecto en Android Studio, deja finalizar Gradle Sync, sele
 
 La primera sincronización necesita Internet para descargar dependencias de Maven/Gradle. La pantalla `Consulta GitHub (Ktor)` también necesita Internet en tiempo de ejecución.
 
-## Referencias seguidas
-
-- Proyecto Pablostify: `https://github.com/jonathanluizaga25/Pablostify` (incluida su rama `avances-clase`).
-- Ejemplo del Magister: `https://github.com/calyr/ucbp1_project`, especialmente `feature/koin-viewmodel` y `feature/userinformation`.
-- Ejemplo adicional de navegación: `https://github.com/GCD418/mobile-1/tree/feature/nav-controller`.
-- Material de clase suministrado: MVI, Signin, Koin KMP/ViewModel, KOIN KMP v2, AppNavigation KMP y Ktor KMP, además del material previo del curso.
 
 ## Qué no se agregó deliberadamente
 
