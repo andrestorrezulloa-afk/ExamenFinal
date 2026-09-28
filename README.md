@@ -72,18 +72,6 @@ El ejercicio se implementa con:
 
 Nota: los engines de Ktor están ubicados en sus source sets correctos para que el proyecto sea realmente multiplataforma: OkHttp en `androidMain`, Darwin en `iosMain` y core/ContentNegotiation/JSON en `commonMain`.
 
-## Datos de demo de Pablostify
-
-El estado actual del proyecto de clase todavía usa repositorios locales/mock para las cinco features principales, tal como el avance de Pablostify. Se conservan:
-
-- Usuario demo: Ana García / `anagarcia@gmail.com`.
-- Películas: The Matrix, Spider-Man e Interstellar.
-- Detalles y reparto locales para esas películas.
-- Registro, reseña y logout simulados como operaciones exitosas.
-- La consulta GitHub sí usa red real mediante Ktor.
-
-No se inventó un backend de Pablostify porque ninguno fue proporcionado en el material.
-
 ## Ejecutar
 
 ### Windows
