@@ -11,6 +11,7 @@ import edu.ucb.pablostify.movielist.presentation.screen.MovieListScreen
 import edu.ucb.pablostify.profile.presentation.screen.ProfileScreen
 import edu.ucb.pablostify.register.presentation.screen.RegisterScreen
 import edu.ucb.pablostify.userinformation.presentation.screen.UserInformationScreen
+import edu.ucb.pablostify.openmeteo.presentation.screen.OpenMeteoScreen
 
 @Composable
 fun AppNavHost() {
@@ -26,5 +27,6 @@ fun AppNavHost() {
         }
         composable<NavRoute.Profile> { ProfileScreen(navController) }
         composable<NavRoute.UserInformation> { UserInformationScreen(navController) }
+        composable<NavRoute.OpenMeteo> { OpenMeteoScreen(navController) }
     }
 }

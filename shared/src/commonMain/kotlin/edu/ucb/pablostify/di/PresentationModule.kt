@@ -6,6 +6,7 @@ import edu.ucb.pablostify.movielist.presentation.viewmodel.MovieListViewModel
 import edu.ucb.pablostify.profile.presentation.viewmodel.ProfileViewModel
 import edu.ucb.pablostify.register.presentation.viewmodel.RegisterViewModel
 import edu.ucb.pablostify.userinformation.presentation.viewmodel.UserInformationViewModel
+import edu.ucb.pablostify.openmeteo.presentation.viewmodel.OpenMeteoViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
@@ -16,4 +17,5 @@ val presentationModule = module {
     viewModelOf(::MovieDetailViewModel)
     viewModelOf(::ProfileViewModel)
     viewModelOf(::UserInformationViewModel)
+    viewModelOf(::OpenMeteoViewModel)
 }

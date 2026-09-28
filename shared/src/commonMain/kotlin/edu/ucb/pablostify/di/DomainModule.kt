@@ -8,6 +8,7 @@ import edu.ucb.pablostify.profile.domain.usecase.GetProfileUseCase
 import edu.ucb.pablostify.profile.domain.usecase.LogoutUseCase
 import edu.ucb.pablostify.register.domain.usecase.RegisterUseCase
 import edu.ucb.pablostify.userinformation.domain.usecase.FindAliasUseCase
+import edu.ucb.pablostify.openmeteo.domain.usecase.GetWeatherUseCase
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
@@ -20,4 +21,5 @@ val domainModule = module {
     singleOf(::GetProfileUseCase)
     singleOf(::LogoutUseCase)
     singleOf(::FindAliasUseCase)
+    singleOf(::GetWeatherUseCase)
 }

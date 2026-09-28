@@ -44,6 +44,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: ProfileViewModel 
         state.errorMessage?.let { Text(it) }
         Button(onClick = { viewModel.emitEvent(ProfileEvents.OpenMovies) }, modifier = Modifier.fillMaxWidth().padding(top = 16.dp)) { Text("Ver películas") }
         Button(onClick = { viewModel.emitEvent(ProfileEvents.OpenGithubLookup) }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) { Text("Consulta GitHub (Ktor)") }
+        Button(onClick = { navController.navigate(NavRoute.OpenMeteo) }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) { Text("Consulta Clima (Open-Meteo)") }
         Button(onClick = { viewModel.emitEvent(ProfileEvents.Logout) }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) { Text("Cerrar sesión") }
     }
 }

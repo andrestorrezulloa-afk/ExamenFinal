@@ -14,6 +14,10 @@ import edu.ucb.pablostify.userinformation.data.datasource.GithubRemoteDataSource
 import edu.ucb.pablostify.userinformation.data.repository.GithubRepositoryImpl
 import edu.ucb.pablostify.userinformation.data.service.GitHubApiService
 import edu.ucb.pablostify.userinformation.domain.repository.GithubRepository
+import edu.ucb.pablostify.openmeteo.data.datasource.OpenMeteoRemoteDataSource
+import edu.ucb.pablostify.openmeteo.data.repository.OpenMeteoRepositoryImpl
+import edu.ucb.pablostify.openmeteo.data.service.OpenMeteoApiService
+import edu.ucb.pablostify.openmeteo.domain.repository.OpenMeteoRepository
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -44,5 +48,13 @@ val dataModule = module {
 
     single<GithubRepository> {
         GithubRepositoryImpl(get())
+    }
+
+    single<OpenMeteoRemoteDataSource> {
+        OpenMeteoApiService()
+    }
+
+    single<OpenMeteoRepository> {
+        OpenMeteoRepositoryImpl(get())
     }
 }
