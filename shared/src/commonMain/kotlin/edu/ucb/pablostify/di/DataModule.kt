@@ -15,9 +15,13 @@ import edu.ucb.pablostify.userinformation.data.repository.GithubRepositoryImpl
 import edu.ucb.pablostify.userinformation.data.service.GitHubApiService
 import edu.ucb.pablostify.userinformation.domain.repository.GithubRepository
 import edu.ucb.pablostify.openmeteo.data.datasource.OpenMeteoRemoteDataSource
+import edu.ucb.pablostify.openmeteo.data.datasource.RealTimeDataBase
+import edu.ucb.pablostify.openmeteo.data.repository.ExchangeRepositoryImpl
 import edu.ucb.pablostify.openmeteo.data.repository.OpenMeteoRepositoryImpl
 import edu.ucb.pablostify.openmeteo.data.service.OpenMeteoApiService
 import edu.ucb.pablostify.openmeteo.domain.repository.OpenMeteoRepository
+import edu.ucb.pablostify.openmeteo.domain.repository.ExchangeRepository
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -57,4 +61,7 @@ val dataModule = module {
     single<OpenMeteoRepository> {
         OpenMeteoRepositoryImpl(get())
     }
+
+    singleOf(::RealTimeDataBase)
+    single<ExchangeRepository> { ExchangeRepositoryImpl(get()) }
 }

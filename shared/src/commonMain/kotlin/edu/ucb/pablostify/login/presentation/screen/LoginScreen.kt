@@ -23,7 +23,13 @@ import edu.ucb.pablostify.login.presentation.viewmodel.LoginEffects
 import edu.ucb.pablostify.login.presentation.viewmodel.LoginEvents
 import edu.ucb.pablostify.login.presentation.viewmodel.LoginViewModel
 import edu.ucb.pablostify.navigation.NavRoute
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import pablostify.shared.generated.resources.Res
+import pablostify.shared.generated.resources.login_button
+import pablostify.shared.generated.resources.login_password
+import pablostify.shared.generated.resources.login_register
+import pablostify.shared.generated.resources.login_title
 
 @Composable
 fun LoginScreen(
@@ -48,7 +54,7 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Pablostify")
-        Text("Iniciar sesión", modifier = Modifier.padding(bottom = 16.dp))
+        Text(stringResource(Res.string.login_title), modifier = Modifier.padding(bottom = 16.dp))
         OutlinedTextField(
             value = state.username,
             onValueChange = { viewModel.emitEvent(LoginEvents.OnUsernameChanged(it)) },
@@ -59,7 +65,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = state.password,
             onValueChange = { viewModel.emitEvent(LoginEvents.OnPasswordChanged(it)) },
-            label = { Text("Contraseña") },
+            label = { Text(stringResource(Res.string.login_password)) },
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp)
@@ -70,10 +76,10 @@ fun LoginScreen(
             enabled = !state.isLoading,
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
         ) {
-            if (state.isLoading) CircularProgressIndicator() else Text("Ingresar")
+            if (state.isLoading) CircularProgressIndicator() else Text(stringResource(Res.string.login_button))
         }
         TextButton(onClick = { viewModel.emitEvent(LoginEvents.OnRegister) }) {
-            Text("Crear cuenta")
+            Text(stringResource(Res.string.login_register))
         }
     }
 }

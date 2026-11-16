@@ -1,0 +1,62 @@
+INFORME DE LOCALIZACIÓN LOCO — EXAMENFINAL
+========================================
+
+Estado actual: traducciones descargadas de Loco, importadas en recursos Compose
+y utilizadas en LoginScreen. No se muestra ni se modificó LOCO_API_KEY; no se
+modificaron Firebase, Open-Meteo, navegación, MVI, ViewModel ni Koin. No se
+hicieron commits, merges o push.
+
+COMPARACIÓN CON LA REFERENCIA LOCAL
+----------------------------------
+Proyecto consultado: D:\Universidad\ProyectosPrograMovil\ucbp1_project-localise.
+
+Archivo del magíster | Archivo equivalente ExamenFinal | Implementación y diferencia | Verificación
+shared/build.gradle.kts | shared/build.gradle.kts | Mismo nombre de tarea downloadLocaliseTranslations, propiedad LOCO_API_KEY, endpoint https://localise.biz/api/export/archive/xml.zip y propósito de extraer strings.xml a composeResources. La versión ExamenFinal valida ZIP, XML, identificadores y rutas, respalda archivos previos y no borra directorios; la referencia comprueba dos marcadores de clave diferentes y borra carpetas values completas | HTTP 200; ZIP real de 1924 bytes; tarea ejecutada con éxito.
+shared/src/commonMain/composeResources/values/strings.xml | shared/src/commonMain/composeResources/values/strings.xml | Misma estructura; se usaron los textos del proyecto Loco de ExamenFinal, no los del magíster. Idioma predeterminado exportado: es-BO | XML válido; 5 identificadores; recursos Compose generados.
+shared/src/commonMain/composeResources/values-es-rES/strings.xml | shared/src/commonMain/composeResources/values-es-rES/strings.xml | Misma estructura para es-ES, contenidos propios de Loco ExamenFinal | XML válido; 5 identificadores coincidentes.
+shared/src/commonMain/composeResources/values-en-rUS/strings.xml | shared/src/commonMain/composeResources/values-en-rUS/strings.xml | Misma estructura para en-US, contenidos propios de Loco ExamenFinal | XML válido; 5 identificadores coincidentes.
+shared/src/commonMain/kotlin/org/ucb/appp1/exchange/presentation/screen/ExchangeScreen.kt | shared/src/commonMain/kotlin/edu/ucb/pablostify/login/presentation/screen/LoginScreen.kt | Mismo mecanismo stringResource(Res.string.nombre); paquete generado real pablostify.shared.generated.resources en vez de appp1.shared.generated.resources. Se sustituyeron solo cuatro textos equivalentes en Login; no se añadió pantalla ni selector de idioma | Compilación Android correcta; prueba visual pendiente sin dispositivo.
+
+DESCARGA, IDIOMAS Y TEXTOS
+-------------------------
+- Vista previa de :shared:downloadLocaliseTranslations: HTTP 200, ZIP validado,
+  tres carpetas values con los mismos identificadores. No copió recursos.
+- Tras respaldar composeResources fuera del repositorio, se ejecutó la tarea
+  normal: HTTP 200, ZIP de 1924 bytes, importación de values, values-es-rES y
+  values-en-rUS con BUILD SUCCESSFUL. ZIP guardado en
+  shared/build/translations.zip (salida de build).
+- Copia de seguridad externa:
+  C:\Users\andre\AppData\Local\Temp\opencode\
+  composeResources-before-loco-import-20261026-172750-7256242.
+- Identificadores exportados en los tres idiomas: login_title, login_email,
+  login_password, login_button y login_register. No hubo identificadores
+  duplicados ni incompatibles detectados por la tarea y Compose.
+- Predeterminado values (es-BO) y es-ES: login_title «Iniciar sesión»,
+  login_email «Correo electrónico», login_password «Contraseña»,
+  login_button «Ingresar», login_register «Crear cuenta».
+- en-US: login_title «Log in», login_email «Email»,
+  login_password «Password», login_button «Sign in»,
+  login_register «Create account».
+- En LoginScreen se usan login_title, login_password, login_button y
+  login_register. No se usó login_email para el campo «Usuario», porque el
+  ViewModel y Credentials trabajan con Username, no con correo electrónico.
+  El texto «Pablostify» y los demás textos no equivalentes quedaron intactos.
+
+VERIFICACIONES Y LÍMITES
+------------------------
+- .\gradlew.bat :androidApp:assembleDebug --no-daemon: BUILD SUCCESSFUL,
+  60 tareas (18 ejecutadas, 42 al día). Compilaron los accesores de recursos
+  Compose; el generado String0.commonMain.kt incluye las variantes en-US,
+  es-ES y la predeterminada para los cinco identificadores.
+- .\gradlew.bat :shared:testAndroidHostTest --no-daemon: BUILD SUCCESSFUL.
+- adb devices: ningún dispositivo conectado; no se realizó prueba visual ni
+  se comprobó el cambio de idioma en ejecución. Se espera que es-ES/en-US
+  seleccionen sus traducciones y que otras configuraciones usen el fallback
+  values exportado como es-BO; la prueba visual sigue pendiente.
+- No se tocaron archivos Kotlin de Firebase u Open-Meteo, la navegación,
+  ViewModels ni módulos Koin. La compilación confirma que el código existente
+  sigue compilando, pero no verifica en dispositivo sus servicios remotos.
+- En Git, los tres directorios values están no seguidos y LoginScreen.kt
+  modificado. Los demás cambios locales previos permanecen intactos, incluido
+  un salto de línea previo en gradle.properties del repositorio. La API key
+  sigue solo en las propiedades de usuario de Gradle, fuera del repositorio.

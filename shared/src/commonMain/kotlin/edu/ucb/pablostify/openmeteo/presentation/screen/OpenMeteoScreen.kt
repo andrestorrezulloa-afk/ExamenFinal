@@ -34,6 +34,8 @@ fun OpenMeteoScreen(
     viewModel: OpenMeteoViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val message by viewModel.message.collectAsState()
+    val firebaseError by viewModel.firebaseError.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.effects.collect { effect ->
@@ -59,6 +61,16 @@ fun OpenMeteoScreen(
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(top = 4.dp, bottom = 12.dp)
         )
+
+        Text(
+            text = "Firebase Realtime Database (app_weather)",
+            style = MaterialTheme.typography.titleMedium
+        )
+        firebaseError?.let { error ->
+            Text(text = error, color = MaterialTheme.colorScheme.error)
+        } ?: Text(message ?: "Esperando valor de app_weather...")
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = state.latitudeText,
