@@ -60,3 +60,6 @@ VERIFICACIONES Y LÍMITES
   modificado. Los demás cambios locales previos permanecen intactos, incluido
   un salto de línea previo en gradle.properties del repositorio. La API key
   sigue solo en las propiedades de usuario de Gradle, fuera del repositorio.
+## CI/CD
+
+El proyecto utiliza Appcircle para ejecutar pruebas unitarias y generar un APK de Android.
